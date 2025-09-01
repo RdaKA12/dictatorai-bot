@@ -1,4 +1,3 @@
-
 import logging
 import random
 import time
@@ -52,6 +51,7 @@ def generate_text(prompt: str) -> Optional[str]:
         logging.exception("generate_text failed")
         return None
 
+
 def post_to_reddit(text: str):
     if settings.dry_run:
         logging.info(f"[DRY_RUN] Would post to r/{settings.reddit_subreddit}: {text}")
@@ -70,6 +70,7 @@ def post_to_reddit(text: str):
         logging.info("Posted to Reddit")
     except Exception:
         logging.exception("Reddit post failed")
+
 
 def post_to_twitter(text: str):
     if settings.dry_run:
@@ -90,6 +91,7 @@ def post_to_twitter(text: str):
     except Exception:
         logging.exception("Twitter post failed")
 
+
 def main():
     logging.info("Creative Reddit + Twitter poster started...")
     while True:
@@ -107,6 +109,7 @@ def main():
         sleep_seconds = int(interval_hours * 3600)
         logging.info(f"Sleeping for ~{interval_hours:.2f}h ({sleep_seconds}s)...")
         time.sleep(sleep_seconds)
+
 
 if __name__ == "__main__":
     try:

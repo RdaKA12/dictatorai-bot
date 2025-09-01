@@ -27,15 +27,18 @@ if BLOCKLIST_WORDS:
 # Try OpenAI client
 try:
     from openai import OpenAI  # type: ignore
+
     _client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", ""))
 except Exception:
     _client = None
+
 
 def _check_denylist(text: str) -> Tuple[bool, str]:
     for pattern in _DENYLIST_PATTERNS:
         if pattern.search(text or ""):
             return False, "Blocked by denylist pattern"
     return True, ""
+
 
 def _check_openai(text: str) -> Tuple[bool, str]:
     if not _client:
@@ -51,6 +54,7 @@ def _check_openai(text: str) -> Tuple[bool, str]:
         return True, ""
     except Exception as e:
         return False, f"Moderation API error: {e}"
+
 
 def is_allowed(text: str) -> Tuple[bool, str]:
     """
