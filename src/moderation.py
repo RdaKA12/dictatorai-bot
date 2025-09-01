@@ -6,9 +6,9 @@ Moderation utilities for dictatorai-bot.
 - Fail-closed: if moderation is ON and external check errors, block.
 """
 
-from typing import List, Tuple
 import os
 import re
+from typing import List, Tuple
 
 from dotenv import load_dotenv
 
