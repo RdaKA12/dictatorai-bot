@@ -1,3 +1,4 @@
+
 import logging
 import random
 import time
@@ -8,8 +9,8 @@ import tweepy
 from openai import OpenAI
 
 from .config import Settings
-from .prompts import PROMPTS
 from .moderation import is_allowed
+from .prompts import PROMPTS
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -17,6 +18,7 @@ settings = Settings()
 settings.validate()
 
 client = OpenAI(api_key=settings.openai_api_key) if not settings.dry_run else None
+
 
 def generate_text(prompt: str) -> Optional[str]:
     if settings.dry_run:
@@ -26,7 +28,13 @@ def generate_text(prompt: str) -> Optional[str]:
         resp = client.chat.completions.create(
             model=settings.openai_model,
             messages=[
-                {"role": "system", "content": "You write short, cryptic, mysterious single-paragraph posts (max 280 chars). Avoid unsafe content."},
+                {
+                    "role": "system",
+                    "content": (
+                        "You write short, cryptic, mysterious single-paragraph posts "
+                        "(max 280 chars). Avoid unsafe content."
+                    ),
+                },
                 {"role": "user", "content": prompt},
             ],
             temperature=0.9,

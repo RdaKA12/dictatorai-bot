@@ -1,8 +1,11 @@
-import os
+
 from dataclasses import dataclass
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 @dataclass
 class Settings:
@@ -15,7 +18,10 @@ class Settings:
     reddit_client_secret: str = os.getenv("REDDIT_CLIENT_SECRET", "")
     reddit_username: str = os.getenv("REDDIT_USERNAME", "")
     reddit_password: str = os.getenv("REDDIT_PASSWORD", "")
-    reddit_user_agent: str = os.getenv("REDDIT_USER_AGENT", "python:DictatorAiApp:1.0 (by /u/yourname)")
+    reddit_user_agent: str = os.getenv(
+        "REDDIT_USER_AGENT",
+        "python:DictatorAiApp:1.0 (by /u/yourname)",
+    )
     reddit_subreddit: str = os.getenv("REDDIT_SUBREDDIT", "")
 
     # Twitter (X)
