@@ -12,11 +12,11 @@ A minimal Reddit + Twitter (X) poster that **generates short, cryptic one-paragr
 
 ## Features
 
-- 🔮 OpenAI-powered text generation (short, mysterious style)
-- 🧵 Auto-posts to **Reddit** (text post) and **Twitter (X)** (tweet)
-- ⏱️ Randomized schedule (min–max hours)
-- 🧯 Built-in moderation (**blocklist** + model), **fail-closed**
-- 🧪 Tests + CI, Docker-ready, pinned dependencies
+-  OpenAI-powered text generation (short, mysterious style)
+-  Auto-posts to **Reddit** (text post) and **Twitter (X)** (tweet)
+-  Randomized schedule (min–max hours)
+-  Built-in moderation (**blocklist** + model), **fail-closed**
+-  Tests + CI, Docker-ready, pinned dependencies
 
 ---
 
