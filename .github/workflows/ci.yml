@@ -7,12 +7,17 @@ on:
 jobs:
   lint-test:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt ruff black pytest
-      - run: ruff check .
-      - run: black --check .
-      - run: pytest -q
+      - name: Ruff
+        run: ruff check .
+      - name: Black (check)
+        run: black --check .
+      - name: Run tests
+        run: pytest -q
