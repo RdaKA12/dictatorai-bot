@@ -2,7 +2,7 @@
 
 A minimal Reddit + Twitter (X) poster that **generates short, cryptic one-paragraph posts** with OpenAI and shares them on your accounts at random intervals. Safe-by-default thanks to *fail-closed* moderation and **DRY_RUN** mode.
 
-![ci](https://img.shields.io/github/actions/workflow/status/yourname/dictatorai-bot/ci.yml?label=CI)
+![CI](https://img.shields.io/github/actions/workflow/status/RdaKA12/dictatorai-bot/ci.yml?branch=main&label=CI)
 ![python](https://img.shields.io/badge/python-3.11-blue)
 ![docker](https://img.shields.io/badge/docker-ready-blue)
 
