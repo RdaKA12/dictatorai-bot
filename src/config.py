@@ -43,9 +43,12 @@ class Settings:
     blocklist_words: str = os.getenv("BLOCKLIST_WORDS", "")
 
     def validate(self):
+        # Re-read from env at validation time (tests set env just before calling)
+        min_h = float(os.getenv("POST_INTERVAL_MIN_HOURS", str(self.min_hours)))
+        max_h = float(os.getenv("POST_INTERVAL_MAX_HOURS", str(self.max_hours)))
 
-        self.min_hours = float(self.min_hours)
-        self.max_hours = float(self.max_hours)
+        self.min_hours = min_h
+        self.max_hours = max_h
 
         if self.min_hours <= 0 or self.max_hours < self.min_hours:
             raise ValueError("Invalid interval hours. Check POST_INTERVAL_* in .env")
@@ -78,3 +81,4 @@ class Settings:
 
             if missing:
                 raise ValueError("Missing env vars: " + ", ".join(missing))
+
