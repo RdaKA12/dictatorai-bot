@@ -1,6 +1,5 @@
-
-from dataclasses import dataclass
 import os
+from dataclasses import dataclass
 
 from dotenv import load_dotenv
 
@@ -12,7 +11,6 @@ class Settings:
     # OpenAI
     openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
     openai_model: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-
     # Reddit
     reddit_client_id: str = os.getenv("REDDIT_CLIENT_ID", "")
     reddit_client_secret: str = os.getenv("REDDIT_CLIENT_SECRET", "")
@@ -23,21 +21,17 @@ class Settings:
         "python:DictatorAiApp:1.0 (by /u/yourname)",
     )
     reddit_subreddit: str = os.getenv("REDDIT_SUBREDDIT", "")
-
     # Twitter (X)
     twitter_bearer_token: str = os.getenv("TWITTER_BEARER_TOKEN", "")
     twitter_api_key: str = os.getenv("TWITTER_API_KEY", "")
     twitter_api_secret: str = os.getenv("TWITTER_API_SECRET", "")
     twitter_access_token: str = os.getenv("TWITTER_ACCESS_TOKEN", "")
     twitter_access_token_secret: str = os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "")
-
     # Scheduling
     min_hours: float = float(os.getenv("POST_INTERVAL_MIN_HOURS", "2"))
     max_hours: float = float(os.getenv("POST_INTERVAL_MAX_HOURS", "3"))
-
     # Modes
     dry_run: bool = os.getenv("DRY_RUN", "1") == "1"
-
     # Moderation
     moderation_on: bool = os.getenv("MODERATION", "1") == "1"
     moderation_model: str = os.getenv("MODERATION_MODEL", "omni-moderation-latest")
@@ -46,12 +40,10 @@ class Settings:
     def validate(self):
         if self.min_hours <= 0 or self.max_hours < self.min_hours:
             raise ValueError("Invalid interval hours. Check POST_INTERVAL_* in .env")
-
         if not self.dry_run:
             missing = []
             if not self.openai_api_key:
                 missing.append("OPENAI_API_KEY")
-
             for k, v in {
                 "REDDIT_CLIENT_ID": self.reddit_client_id,
                 "REDDIT_CLIENT_SECRET": self.reddit_client_secret,
@@ -62,7 +54,6 @@ class Settings:
             }.items():
                 if not v:
                     missing.append(k)
-
             for k, v in {
                 "TWITTER_BEARER_TOKEN": self.twitter_bearer_token,
                 "TWITTER_API_KEY": self.twitter_api_key,
@@ -72,6 +63,5 @@ class Settings:
             }.items():
                 if not v:
                     missing.append(k)
-
             if missing:
                 raise ValueError("Missing env vars: " + ", ".join(missing))
