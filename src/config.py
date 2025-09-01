@@ -81,4 +81,3 @@ class Settings:
 
             if missing:
                 raise ValueError("Missing env vars: " + ", ".join(missing))
-
