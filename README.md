@@ -6,7 +6,7 @@ A minimal Reddit + Twitter (X) poster that **generates short, cryptic one-paragr
 ![python](https://img.shields.io/badge/python-3.11-blue)
 ![docker](https://img.shields.io/badge/docker-ready-blue)
 
-> ⚠️ **Heads-up**: Respect platform rules. Keep moderation **ON**. Default `DRY_RUN=1` prevents accidental posting.
+>  **Heads-up**: Respect platform rules. Keep moderation **ON**. Default `DRY_RUN=1` prevents accidental posting.
 
 ---
 
